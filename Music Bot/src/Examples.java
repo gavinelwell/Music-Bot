@@ -36,17 +36,31 @@ public class Examples {
         System.out.print(playlist.tempSongs);
     }
     @Test
-    public void searchAlreadyURL()
+    public void shuffleTest(){
+        ArrayList<String> songs = new ArrayList<>();
+        Playlist playlist = new Playlist("Playlist", songs);
+        playlist.intakeSongs("Bohemian Rhapsody", "Humble", "Ride on Time", "Feel It", "Father Stretch My Hands Pt.1", "Stir Fry", "My Boo");
+        System.out.print(playlist.tempSongs);
+        System.out.print("\n");
+        playlist.enableShuffle();
+        System.out.print(playlist.tempSongs);
+    }
+    @Test
+    public void searchCurrentURL()
             throws MalformedURLException {
         Search search = new Search();
         search.intakeKeyword("https://www.youtube.com/results?search_query=never+gonna+give+you+up");
-        assertEquals(search.link, new URL("https://www.youtube.com/results?search_query=never+gonna+give+you+up"));
+        assertEquals(search.link, new URL("https://www.youtube.com/results?search_query=never%20gonna%20give%20you%20up"));
     }
     @Test
     public void searchCreateURL()
             throws MalformedURLException {
         Search search = new Search();
-        search.intakeKeyword("never gonna give you up");
-        assertEquals(search.link, new URL("https://www.youtube.com/results?search_query=never+gonna+give+you+up"));
+        search.intakeKeyword("pink+white frank ocean");
+        assertEquals(search.link, new URL("https://www.youtube.com/results?search_query=pink%2Bwhite%20frank%20ocean"));
+    }
+    @Test
+    public void setDefaultSite()
+            throws MalformedURLException{
     }
 }
